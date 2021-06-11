@@ -13,10 +13,24 @@
 
 @implementation ViewController
 
+NSString *cellId = @"cellId";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    self.title = @"Sample app";
+    self.navigationController.navigationBar.prefersLargeTitles = YES;
+
+    [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:cellId];
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+    return cell;
+}
 
 @end
